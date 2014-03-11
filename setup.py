@@ -3,7 +3,7 @@
 
 import os
 import sys
-import roomyjob
+import gerbil
 
 try:
     from setuptools import setup
@@ -17,26 +17,23 @@ if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     sys.exit()
 
-readme = open('README.rst').read()
-history = open('HISTORY.rst').read().replace('.. :changelog:', '')
+readme = open('README.md').read()
+history = open('HISTORY.md').read().replace('.. :changelog:', '')
 
 setup(
     name='gerbil',
-    version=roomyjob.__version__,
+    version=gerbil.__version__,
     description='Tool for adding text to the bottom of PDF pages.',
     long_description=readme + '\n\n' + history,
     author='Ben Hughes',
     author_email='bwghughes@gmail.com',
-    url='https://github.com/bwghughes/roomyjob',
-    packages=[
-        'roomyjob',
-    ],
-    package_dir={'roomyjob': 'roomyjob'},
+    url='https://github.com/bwghughes/gerbil',
     include_package_data=True,
     install_requires=install_requires,
+    py_modules=['gerbil']
     license="BSD",
     zip_safe=False,
-    keywords='roomyjob',
+    keywords='gerbil',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
@@ -51,7 +48,7 @@ setup(
     test_suite='tests',
     entry_points={
         'console_scripts':
-            ['roomyjob=roomyjob:main']
+            ['gerbil=gerbil:main']
     }
 
 )
