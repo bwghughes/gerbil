@@ -21,7 +21,7 @@ history = open('HISTORY.md').read().replace('.. :changelog:', '')
 
 setup(
     name='gerbil',
-    version=0.4
+    version=0.5,
     description='Tool for adding text to the bottom of PDF pages.',
     long_description=readme + '\n\n' + history,
     author='Ben Hughes',

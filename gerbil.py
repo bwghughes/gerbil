@@ -3,16 +3,11 @@ import StringIO
 from PyPDF2 import PdfFileMerger, PdfFileWriter, PdfFileReader
 
 from reportlab.pdfgen import canvas
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.pagesizes import A4
-from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase.ttfonts import FF_SERIF
 from reportlab.lib.colors import gray
 
 from clint.textui import progress
-
-pdfmetrics.registerFont(TTFont('Arial', 'Arial.ttf'))
-
 
 def create_footer(options):
     # create a new PDF with Reportlab
@@ -20,7 +15,7 @@ def create_footer(options):
     can = canvas.Canvas(packet, pagesize=A4)
     width, height = A4
     can.setFillColor(gray)
-    can.setFont('Arial', 8)
+    can.setFont(FF_SERIF, 8)
     can.setAuthor("VFQ Education from Emergn")
     can.setSubject("This publication forms part of Value, Flow, Quality\
                     Education. Details of this and other Emergn courses can be\
