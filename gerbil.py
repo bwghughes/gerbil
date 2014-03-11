@@ -13,8 +13,6 @@ from clint.textui import progress
 
 pdfmetrics.registerFont(TTFont('Arial', 'Arial.ttf'))
 
-__version__ = 0.2
-
 
 def create_footer(options):
     # create a new PDF with Reportlab

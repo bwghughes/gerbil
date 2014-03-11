@@ -3,7 +3,6 @@
 
 import os
 import sys
-import gerbil
 
 try:
     from setuptools import setup
@@ -22,7 +21,7 @@ history = open('HISTORY.md').read().replace('.. :changelog:', '')
 
 setup(
     name='gerbil',
-    version=gerbil.__version__,
+    version=0.4
     description='Tool for adding text to the bottom of PDF pages.',
     long_description=readme + '\n\n' + history,
     author='Ben Hughes',
