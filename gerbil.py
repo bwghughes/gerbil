@@ -1,39 +1,36 @@
-from optparse import OptionParser
 import StringIO
-from PyPDF2 import PdfFileMerger, PdfFileWriter, PdfFileReader
+from PyPDF2 import PdfFileWriter, PdfFileReader
 
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
-from reportlab.pdfbase.ttfonts import FF_SERIF
+
 from reportlab.lib.colors import gray
 
 from clint.textui import progress
 
+
 def create_footer(options):
-    # create a new PDF with Reportlab
-    packet = StringIO.StringIO()
-    can = canvas.Canvas(packet, pagesize=A4)
+    pdf = StringIO.StringIO()
+    can = canvas.Canvas(pdf, pagesize=A4)
     width, height = A4
     can.setFillColor(gray)
-    can.setFont(FF_SERIF, 8)
-    can.setAuthor("VFQ Education from Emergn")
-    can.setSubject("This publication forms part of Value, Flow, Quality\
-                    Education. Details of this and other Emergn courses can be\
-                    obtained from Emergn, Fitzwilliam Hall, Fitzwilliam Place,\
-                    Dublin 2, Ireland or Emergn, One International Place,\
-                    Suite 1400, Boston, MA 02110, USA.Alternatively, you may\
-                    visit the Value, Flow, Quality website at \
-                    http://www.valueflowquality.com where you can learn more\
-                    about the range of courses offered by Value, Flow, Quality")
-    can.drawCentredString(width/2.0, 20, options.text)
+    can.setFont('Bliss-Regular', 8)
+    can.setAuthor(options.author)
+    can.setSubject(options.subject)
+    can.drawCentredString(width / 2.0, 20, options.text)
     can.save()
-    return packet
+    return pdf
 
 
 def merge_files(options, footer):
     footer.seek(0)
     new_pdf = PdfFileReader(footer)
-    book = PdfFileReader(open(options.input, "rb"))
+    try:
+        book = PdfFileReader(open(options.input, "rb"))
+    except Exception, e:
+        print "Unable to load input PDF - {}".format(e)
+        exit()
+
     output = PdfFileWriter()
     for index, page in progress.dots(enumerate(book.pages)):
         page = book.getPage(index)
@@ -44,16 +41,3 @@ def merge_files(options, footer):
     output.write(outputStream)
     outputStream.close()
     print "Written {}".format(options.output)
-
-def main():
-    parser = OptionParser()
-    parser.add_option('-t', '--text',
-                      help="The text to appear on footer the page.")
-    parser.add_option('-i', '--input',
-                      help="The input file for the text to be added to.")
-    parser.add_option('-o', '--output',
-                      help="The ouput file to be saved.")
-
-    (options, args) = parser.parse_args()
-    footer = create_footer(options)
-    merge_files(options, footer)

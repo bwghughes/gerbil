@@ -43,14 +43,8 @@ output/*/index.html
 # Sphinx
 docs/_build
 
-*.py,cover
+# Docs
+*.pdf
 
-*.py,cover
-
-*.py,cover
-
-*.py,cover
-
-*.py,cover
-
-roomyjob/__init__.py,cover
+# Fonts
+*.ttf

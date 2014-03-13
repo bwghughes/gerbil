@@ -29,7 +29,10 @@ setup(
     url='https://github.com/bwghughes/gerbil',
     include_package_data=True,
     install_requires=install_requires,
-    py_modules=['gerbil'],
+    packages=[
+        'gerbil',
+    ],
+    package_dir={'gerbil': 'gerbil'},
     license="BSD",
     zip_safe=False,
     keywords='gerbil',
