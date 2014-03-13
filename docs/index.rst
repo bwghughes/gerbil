@@ -7,7 +7,7 @@ Welcome to Gerbil's documentation!
 ===================================
 
 Gerbil is a tool to simply watermark the bottom of existing PDF pages
-with a personalised text message - name and function inspired by our awesome publishing friends at `Pragmatic Programmers <http://pragprog.com/>`_.
+with a personalised text message - name and function inspired by those awesome folks at `Pragmatic Programmers <http://pragprog.com/>`_.
 
 Installation
 ------------
