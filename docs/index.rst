@@ -12,7 +12,7 @@ with a personalised text message - name and function inspired by those awesome f
 Installation
 ------------
 
-Gerbil is hosted on PyPi, but somes with a CLI, called, you guessed it gerbil.
+Gerbil is hosted on PyPi, but comes with a CLI, called, you guessed it gerbil.
 
 To install simply run:
 
