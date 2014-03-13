@@ -69,10 +69,6 @@ Which displays:
       -p PADDING, --padding=PADDING
                             The padding from the bottom of the page
 
-Options
---------
-
-* -i --input: The input PDF. Currently
 
 Shortcomings
 ------------
