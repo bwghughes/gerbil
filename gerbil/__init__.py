@@ -30,9 +30,9 @@ def main():
     parser.add_option('-o', '--output',
                       help="The ouput file to be saved.")
     parser.add_option('-p', '--padding',
-                      help="The padding from the bottom of the page")
+                      help="NOT IMPLEMENTED YET !! - The padding from the \
+                            bottom of the page ")
     (options, args) = parser.parse_args()
-
 
     pdfmetrics.registerFont(TTFont(*create_font_args(options)))
     f = create_footer(options)

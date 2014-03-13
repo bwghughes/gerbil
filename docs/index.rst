@@ -7,7 +7,7 @@ Welcome to Gerbil's documentation!
 ===================================
 
 Gerbil is a tool to simply watermark the bottom of existing PDF pages
-with a personalised text message - name and funciton inspired by our awesome publishing friends at `Pragmatic Programmers <http://pragprog.com/>`_.
+with a personalised text message - name and function inspired by our awesome publishing friends at `Pragmatic Programmers <http://pragprog.com/>`_.
 
 Installation
 ------------
@@ -85,8 +85,10 @@ Currently Gerbil only supports adding text to the bottom of portrait oriented, u
 To Do
 ------
 
+0. Tests !!!!
 1. Options for paper sizes & orientation
 2. Different distances from bottomof page.
 3. Different colors.
 4. PDF Password support.
 5. PDF Meta data - currently hard wired.
+6. Better exception handling.
