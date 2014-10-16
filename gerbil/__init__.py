@@ -32,6 +32,14 @@ def main():
     parser.add_option('-p', '--padding',
                       help="NOT IMPLEMENTED YET !! - The padding from the \
                             bottom of the page ")
+    parser.add_option('--page-width',
+                      help="The width of the page")
+    parser.add_option('--page-height',
+                      help="The height of the page")
+    parser.add_option('--landscape',
+                      action="store_true", dest="landscape", default=False,
+                      help="Specify landscape orientation, otherwise portrait")
+    
     (options, args) = parser.parse_args()
 
     pdfmetrics.registerFont(TTFont(*create_font_args(options)))
