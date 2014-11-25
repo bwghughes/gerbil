@@ -9,7 +9,8 @@ try:
 except ImportError:
     from distutils.core import setup
 
-requirements_lines = [line.strip() for line in open('requirements.txt').readlines()]
+requirements_lines = [line.strip()
+                      for line in open('requirements.txt').readlines()]
 install_requires = list(filter(None, requirements_lines))
 
 if sys.argv[-1] == 'publish':
@@ -21,7 +22,7 @@ history = open('HISTORY.md').read().replace('.. :changelog:', '')
 
 setup(
     name='gerbil',
-    version=0.7,
+    version=0.8,
     description='Tool for adding text to the bottom of PDF pages.',
     long_description=readme + '\n\n' + history,
     author='Ben Hughes',
