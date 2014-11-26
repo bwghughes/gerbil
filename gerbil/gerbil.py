@@ -5,20 +5,43 @@ import StringIO
 from PyPDF2 import PdfFileWriter, PdfFileReader
 
 from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import A4, landscape
+from reportlab.lib import pagesizes
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.lib.colors import gray
+from reportlab.lib import colors
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFError
-
+from reportlab.lib.units import cm
 from clint.textui import progress
 
 
-def get_page_size(options, default=A4):
+def get_paper_size(size):
+    return {
+        'A0': pagesizes.A0,
+        'A1': pagesizes.A1,
+        'A2': pagesizes.A2,
+        'A3': pagesizes.A3,
+        'A4': pagesizes.A4,
+        'A5': pagesizes.A5,
+        'A6': pagesizes.A6,
+        'LETTER': pagesizes.LETTER,
+        'LEGAL': pagesizes.LEGAL,
+        'B0': pagesizes.B0,
+        'B1': pagesizes.B1,
+        'B2': pagesizes.B2,
+        'B3': pagesizes.B3,
+        'B4': pagesizes.B4,
+        'B5': pagesizes.B5,
+        'B6': pagesizes.B6,
+    }.get(size, pagesizes.A4)
+
+
+def get_page_size(options):
     if options.page_width and options.page_height:
-        width, height = float(options.page_width), float(options.page_height)
+        width, height = options.page_width * cm, options.page_height * cm
     else:
-        width, height = default
+        width, height = get_paper_size(options.paper_size)
+        if options.landscape:
+            width, height = height, width
     return width, height
 
 
@@ -45,15 +68,20 @@ def create_footer(options):
 
     pdf = StringIO.StringIO()
     width, height = get_page_size(options)
-    if options.landscape:
-        width, height = height, width
+
     can = canvas.Canvas(pdf, pagesize=(width, height))
-    can.setFillColor(gray)
+    color = colors.HexColor(options.font_color)
+    can.setFillColor(color)
+
     size = 8
-    if options.size:
-        size = options.size
+    if options.font_size:
+        size = options.font_size
     can.setFont(options.font_name, size)
-    can.drawCentredString(width / 2.0, height / 2.0, options.text)
+    if options.top and options.side:
+        can.drawString(
+            options.side * cm, height - options.top * cm, options.text)
+    else:
+        can.drawCentredString(width / 2.0, height / 2.0, options.text)
     can.save()
     return pdf, None
 

@@ -16,7 +16,10 @@ def main():
     parser.add_option('-f', '--font',
                       default="Bliss-Regular.ttf",
                       help="Path to the TrueType font file to be used (*.ttf)")
-    parser.add_option('-s', '--size',
+    parser.add_option('-c', '--font-color',
+                      default="#545454",
+                      help="Hex color, defaults to Grey: #545454")
+    parser.add_option('-s', '--font-size',
                       type="float",
                       default=8,
                       help="The font size px to be used (default = 8)")
@@ -24,16 +27,24 @@ def main():
                       help="The author to appear in metadata.")
     parser.add_option('-u', '--subject',
                       help="The subject to appear in metadata.")
-    parser.add_option('-p', '--padding',
-                      help="NOT IMPLEMENTED YET !! - The padding from the \
-                            bottom of the page ")
-    parser.add_option('--page-width',
-                      help="The width of the page")
-    parser.add_option('--page-height',
-                      help="The height of the page")
+    parser.add_option('--top',
+                      type="float",
+                      help="The padding from the left hand side of the page (cm)")
+    parser.add_option('--side',
+                      type="float",
+                      help="The padding from the top of the page (cm)")
+    parser.add_option('-x', '--page-width',
+                      type="float",
+                      help="The width of the page (cm)")
+    parser.add_option('-y', '--page-height',
+                      type="float",
+                      help="The height of the page (cm)")
+    parser.add_option('--paper-size',
+                      default="A4",
+                      help="Default = A4. The named size of the paper Supported: A0 - A6, B0 - B6, LETTER, LEGAL.  Paramter ignored if -x and -y are supplied ")
     parser.add_option('--landscape',
                       action="store_true", dest="landscape", default=False,
-                      help="Specify landscape orientation, otherwise portrait")
+                      help="Default = portrait unless this flag is supplied. Defines the page orientation,  (ignored if -x and -y are given)")
 
     (options, args) = parser.parse_args()
 
