@@ -45,7 +45,11 @@ def main():
     parser.add_option('--landscape',
                       action="store_true", dest="landscape", default=False,
                       help="Default = portrait unless this flag is supplied. Defines the page orientation,  (ignored if -x and -y are given)")
-
+    parser.add_option('--skip-pages',
+                      type="int",
+                      default=0,
+                      help="number of pages to skip before stamping starts. Default = 0"
+                      )
     (options, args) = parser.parse_args()
 
     err = create_font_args(options)

@@ -114,7 +114,8 @@ def merge_files(options, footer):
 
     for index, page in progress.dots(enumerate(book.pages)):
         page = book.getPage(index)
-        page.mergePage(new_pdf.getPage(0))
+        if index >= options.skip_pages:
+            page.mergePage(new_pdf.getPage(0))
         output.addPage(page)
 
     outputStream = open(options.output, "wb")
