@@ -9,10 +9,6 @@ try:
 except ImportError:
     from distutils.core import setup
 
-requirements_lines = [line.strip()
-                      for line in open('requirements.txt').readlines()]
-install_requires = list(filter(None, requirements_lines))
-
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     sys.exit()
@@ -29,7 +25,13 @@ setup(
     author_email='bwghughes@gmail.com',
     url='https://github.com/bwghughes/gerbil',
     include_package_data=True,
-    install_requires=install_requires,
+    install_requires=[
+        'Pillow==2.9.0',
+        'args==0.1.0',
+        'clint==0.4.1',
+        'reportlab==3.2.0',
+    ],
+    dependency_links = ['https://github.com/jerickbixly/PyPDF2#egg=PyPDF2'],
     packages=[
         'gerbil',
     ],
