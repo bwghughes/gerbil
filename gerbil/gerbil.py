@@ -1,17 +1,15 @@
+import io
 import os
-from os.path import splitext, isfile, basename
 from optparse import OptionParser
-import StringIO
-from PyPDF2 import PdfFileWriter, PdfFileReader
+from os.path import basename, isfile, splitext
 
-from reportlab.pdfgen import canvas
-from reportlab.lib import pagesizes
-from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.lib import colors
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFError
-from reportlab.lib.units import cm
 from clint.textui import progress
+from PyPDF2 import PdfFileReader, PdfFileWriter
+from reportlab.lib import colors, pagesizes
+from reportlab.lib.units import cm
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFError, TTFont
+from reportlab.pdfgen import canvas
 
 
 def get_paper_size(size):
@@ -66,7 +64,7 @@ def create_footer(options):
     if not options.text:
         return None, "No text to write, exiting"
 
-    pdf = StringIO.StringIO()
+    pdf = io.BytesIO()
     width, height = get_page_size(options)
 
     can = canvas.Canvas(pdf, pagesize=(width, height))
@@ -91,17 +89,17 @@ def merge_files(options, footer):
     new_pdf = PdfFileReader(footer)
 
     if not test_if_file_exists(options.input):
-        print "Could not read the input file - did you specify one?"
+        print("Could not read the input file - did you specify one?")
         exit(1)
 
     if not options.output:
-        print "No output path specified"
+        print("No output path specified")
         exit(1)
 
     try:
         book = PdfFileReader(open(options.input, "rb"))
-    except Exception, e:
-        print "Unable to load input PDF - {}".format(e)
+    except (Exception, e):
+        print("Unable to load input PDF - {}".format(e))
         exit(1)
 
     output = PdfFileWriter()
@@ -121,4 +119,4 @@ def merge_files(options, footer):
     outputStream = open(options.output, "wb")
     output.write(outputStream)
     outputStream.close()
-    print "Written {}".format(options.output)
+    print("Written {}".format(options.output))

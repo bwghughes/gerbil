@@ -59,7 +59,7 @@ def main():
         if err is None:
             merge_files(options, f)
         else:
-            print err
+            print(err)
     else:
-        print "Can't find {} Exiting".format(options.font)
+        print("Can't find {} Exiting".format(options.font))
         exit(1)

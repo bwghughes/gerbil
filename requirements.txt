@@ -1,5 +1,5 @@
-PyPDF2==1.20
+Pillow==2.9.0
+-e git://github.com/jerickbixly/PyPDF2#egg=PyPDF2
 args==0.1.0
-clint==0.3.4
-reportlab==3.0
-wsgiref==0.1.2
+clint==0.4.1
+reportlab==3.2.0
