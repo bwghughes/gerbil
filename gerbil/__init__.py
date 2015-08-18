@@ -5,7 +5,10 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
 import pkg_resources  # part of setuptools
-version = pkg_resources.require("gerbil")[0].version
+try:
+    version = pkg_resources.require("gerbil")[0].version
+except:
+    pass
 
 
 def main():
