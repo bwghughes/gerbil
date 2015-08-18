@@ -23,7 +23,8 @@ def main():
                       default="Bliss-Regular.ttf",
                       help="Path to the TrueType font file to be used (*.ttf)")
     parser.add_option('-c', '--font-color',
-                      default=get_color("#545454"),
+                      type="string",
+                      default="#545454",
                       help="Hex color, defaults to Grey: #545454")
     parser.add_option('-s', '--font-size',
                       type="float",
