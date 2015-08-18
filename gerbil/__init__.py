@@ -4,10 +4,12 @@ from .gerbil import create_footer, merge_files, create_font_args
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
-__version__ = "1.3"
+import pkg_resources  # part of setuptools
+version = pkg_resources.require("gerbil")[0].version
+
 
 def main():
-    parser = OptionParser(version="{}".format(__version__))
+    parser = OptionParser(version=version)
     parser.add_option('-t', '--text',
                       help="The text to appear on footer the page.")
     parser.add_option('-i', '--input',

@@ -4,8 +4,6 @@
 import os
 import sys
 
-import gerbil
-
 try:
     from setuptools import setup
 except ImportError:
@@ -17,10 +15,11 @@ if sys.argv[-1] == 'publish':
 
 readme = open('README.md').read()
 history = open('HISTORY.md').read().replace('.. :changelog:', '')
+version = "1.5.0"
 
 setup(
     name='gerbil',
-    version=gerbil.__version__,
+    version=version,
     description='Tool for adding text to the bottom of PDF pages.',
     long_description=readme + '\n\n' + history,
     author='Ben Hughes',
@@ -46,11 +45,7 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
-        "Programming Language :: Python :: 2",
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
     ],
     test_suite='tests',
     entry_points={
