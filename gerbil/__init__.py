@@ -4,13 +4,14 @@ from .gerbil import create_footer, merge_files, create_font_args
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
+__version__ = "1.3"
 
 def main():
-    parser = OptionParser()
+    parser = OptionParser(version="{}".format(__version__))
     parser.add_option('-t', '--text',
                       help="The text to appear on footer the page.")
     parser.add_option('-i', '--input',
-                      help="The input file for the text to be added to.")
+                      help="The input file for the text to be addedso.")
     parser.add_option('-o', '--output',
                       help="The ouput file to be saved.")
     parser.add_option('-f', '--font',
@@ -53,6 +54,7 @@ def main():
     (options, args) = parser.parse_args()
 
     err = create_font_args(options)
+
     if not err:
         pdfmetrics.registerFont(TTFont(options.font_name, options.font_path))
         f, err = create_footer(options)
