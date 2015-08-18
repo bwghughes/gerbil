@@ -15,7 +15,7 @@ if sys.argv[-1] == 'publish':
 
 readme = open('README.md').read()
 history = open('HISTORY.md').read().replace('.. :changelog:', '')
-version = "1.5.3"
+version = "1.5.4"
 
 setup(
     name='gerbil',
