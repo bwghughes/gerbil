@@ -31,9 +31,8 @@ setup(
         'args==0.1.0',
         'clint==0.4.1',
         'reportlab==3.2.0',
-        'pypdf2==1.2.5.1',
+        'pypdf2==1.25.1',
     ],
-    # dependency_links = ['https://github.com/jerickbixly/PyPDF2#egg=PyPDF2'],
     packages=[
         'gerbil',
     ],
