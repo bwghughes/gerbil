@@ -45,6 +45,7 @@ docs:
 	open docs/_build/html/index.html
 
 release: clean
+	bumpversion patch --commit --tag
 	python setup.py sdist upload
 
 sdist: clean
