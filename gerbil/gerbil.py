@@ -6,6 +6,7 @@ from os.path import basename, isfile, splitext
 from clint.textui import progress
 from PyPDF2 import PdfFileReader, PdfFileWriter
 from reportlab.lib import colors, pagesizes
+from reportlab.lib.colors import HexColor
 from reportlab.lib.units import cm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFError, TTFont
@@ -47,6 +48,10 @@ def test_if_file_exists(filename):
     if filename is None:
         return False
     return isfile(filename)
+
+def get_color(color): 
+    return HexColor(color)
+
 
 
 def create_font_args(options):

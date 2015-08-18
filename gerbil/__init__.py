@@ -1,5 +1,5 @@
 from optparse import OptionParser
-from .gerbil import create_footer, merge_files, create_font_args
+from .gerbil import create_footer, merge_files, create_font_args, get_color
 
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -23,7 +23,7 @@ def main():
                       default="Bliss-Regular.ttf",
                       help="Path to the TrueType font file to be used (*.ttf)")
     parser.add_option('-c', '--font-color',
-                      default="#545454",
+                      default=get_color("#545454"),
                       help="Hex color, defaults to Grey: #545454")
     parser.add_option('-s', '--font-size',
                       type="float",
