@@ -33,7 +33,7 @@ test-all:
 	tox
 
 coverage:
-	py.test --cov-report html --cov-report xml --cov-report annotate --cov roomyjob tests
+	py.test --cov-report html --cov-report xml --cov-report annotate --cov gerbil tests
 	open htmlcov/index.html
 
 docs:
@@ -45,6 +45,7 @@ docs:
 	open docs/_build/html/index.html
 
 release: clean
+	bumpversion patch --commit --tag
 	python setup.py sdist upload
 
 sdist: clean
