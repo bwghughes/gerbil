@@ -49,9 +49,9 @@ def test_if_file_exists(filename):
         return False
     return isfile(filename)
 
-def get_color(color): 
-    return HexColor(color)
 
+def get_color(color):
+    return HexColor(color)
 
 
 def create_font_args(options):
@@ -73,7 +73,7 @@ def create_footer(options):
     width, height = get_page_size(options)
 
     can = canvas.Canvas(pdf, pagesize=(width, height))
-    color = colors.HexColor(options.font_color)
+    color = options.font_color
     can.setFillColor(color)
 
     size = 8
