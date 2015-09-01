@@ -39,7 +39,7 @@ coverage:
 docs:
 	rm -f docs/roomyjob.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ roomyjob
+	sphinx-apidoc -o docs/ gerbil
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	open docs/_build/html/index.html

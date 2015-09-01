@@ -54,37 +54,42 @@ Which displays:
     $ gerbil --help
     Usage: gerbil [options]
 
-    Options:
-      -h, --help            show this help message and exit
-      -t TEXT, --text=TEXT  The text to appear on footer the page.
-      -f FONT, --font=FONT  The TrueType font file to be used (*.ttf)
-      -a AUTHOR, --author=AUTHOR
-                            The author to appear in metadata.
-      -s SUBJECT, --subject=SUBJECT
-                            The subject to appear in metadata.
-      -i INPUT, --input=INPUT
-                            The input file for the text to be added to.
-      -o OUTPUT, --output=OUTPUT
-                            The ouput file to be saved.
-      -p PADDING, --padding=PADDING
-                            The padding from the bottom of the page
+    --version             show program's version number and exit
+  -h, --help            show this help message and exit
+  -t TEXT, --text=TEXT  The text to appear on footer the page.
+  -i INPUT, --input=INPUT
+                        The input file for the text to be addedso.
+  -o OUTPUT, --output=OUTPUT
+                        The ouput file to be saved.
+  -f FONT, --font=FONT  Path to the TrueType font file to be used (*.ttf)
+  -c FONT_COLOR, --font-color=FONT_COLOR
+                        Hex color, defaults to Grey: #545454
+  -s FONT_SIZE, --font-size=FONT_SIZE
+                        The font size px to be used (default = 8)
+  -a AUTHOR, --author=AUTHOR
+                        The author to appear in metadata.
+  -u SUBJECT, --subject=SUBJECT
+                        The subject to appear in metadata.
+  --top=TOP             The padding from the left hand side of the page (cm)
+  --side=SIDE           The padding from the top of the page (cm)
+  -x PAGE_WIDTH, --page-width=PAGE_WIDTH
+                        The width of the page (cm)
+  -y PAGE_HEIGHT, --page-height=PAGE_HEIGHT
+                        The height of the page (cm)
+  --paper-size=PAPER_SIZE
+                        Default = A4. The named size of the paper Supported:
+                        A0 - A6, B0 - B6, LETTER, LEGAL.  Paramter ignored if
+                        -x and -y are supplied
+  --landscape           Default = portrait unless this flag is supplied.
+                        Defines the page orientation,  (ignored if -x and -y
+                        are given)
+  --skip-pages=SKIP_PAGES
+                        number of pages to skip before stamping starts.
+                        Default = 0
 
-
-Shortcomings
-------------
-
-This is a scratch an itch for a project we're doing at `Action Agile <http://actionagile.co.uk/>`_ at the moment. See below for things that need adding.
-
-Currently Gerbil only supports adding text to the bottom of portrait oriented, unencrypted, unlocked, PDF's in grey. Awesome isn't it? :)
 
 
 To Do
 ------
 
 0. Tests !!!!
-1. Options for paper sizes & orientation
-2. Different distances from bottomof page.
-3. Different colors.
-4. PDF Password support.
-5. PDF Meta data - currently hard wired.
-6. Better exception handling.
