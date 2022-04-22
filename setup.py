@@ -31,7 +31,7 @@ setup(
         'args==0.1.0',
         'clint==0.4.1',
         'reportlab==3.2.0',
-        'pypdf2==1.25.1',
+        'pypdf2==1.27.5',
     ],
     packages=[
         'gerbil',
