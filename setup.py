@@ -30,7 +30,7 @@ setup(
         'Pillow==2.9.0',
         'args==0.1.0',
         'clint==0.4.1',
-        'reportlab==3.2.0',
+        'reportlab==3.5.55',
         'pypdf2==1.25.1',
     ],
     packages=[
