@@ -27,7 +27,7 @@ setup(
     url='https://github.com/bwghughes/gerbil',
     include_package_data=True,
     install_requires=[
-        'Pillow==2.9.0',
+        'Pillow==9.3.0',
         'args==0.1.0',
         'clint==0.4.1',
         'reportlab==3.2.0',
